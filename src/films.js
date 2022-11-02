@@ -44,8 +44,12 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
-
+function moviesAverageByCategory(array, genre) {
+  // filtramos el array por los que tengan "score" (para no hacer media con valor vacío), y por género.
+  // aprovechamos la función del ejercicio 3 que calcula la media, y le enviamos como parámetro el resultado del filter
+  const result = moviesAverage(array.filter(e => e.score && e.genre.includes(genre)));
+  console.log("EXERCISE 6->", result)
+  return result;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
