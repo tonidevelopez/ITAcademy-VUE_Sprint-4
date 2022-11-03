@@ -53,8 +53,20 @@ function moviesAverageByCategory(array, genre) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
+function hoursToMinutes(array) {
+  const result = array.map(movie => {
+    // dividimos '3h 45min' por el espacio en blanco: 3h[0] 45min[1]
+    // comprobamos con undefined si algún dato no existe y le asignamos 0
+    // con parseInt convertimos los números del string en numbers y así poder hacer los cálculos
+    const hours = movie.duration.split(' ')[0] === undefined ? 0 : parseInt(movie.duration.split(' ')[0]);
+    const minutes = movie.duration.split(' ')[1] === undefined ? 0 : parseInt(movie.duration.split(' ')[1]);
+    const duration = (hours * 60) + minutes;
+    // retornamos el array completo reasignando el valor de 'duration'
+    return { ...movie, duration: duration };
+    // NOTA: con 'return { duration }' el test no da error, pero solo obtenemos un array de duraciones
+  });
+  console.log("EXERCISE 7->", result)
+  return result;
 }
 
 // Exercise 8: Get the best film of a year
